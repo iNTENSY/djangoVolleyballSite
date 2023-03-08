@@ -3,7 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import View
-# from django.utils import timezone
+from django.utils import timezone
 from django.views.generic import ListView, CreateView, DetailView
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -33,7 +33,7 @@ class PostListView(TitleMixin, ListView):
         .values('pk', 'date_time_start', 'date_time_end', 'description', 'category__rank', 'reservation')\
         .filter(
         on_main=True,
-        # date_time_start__gte=timezone.now()
+        date_time_start__gte=timezone.now()
     )\
         .order_by('-date_time_start')
     template_name = 'post_templates/all_posts.html'
