@@ -1,0 +1,557 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #333333;
+    margin: 0;
+    line-height: 1.6;
+}
+
+hr{
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 40px 0;
+    border: 0;
+    background-color: #e5e5e5;
+}
+
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+/* Контейнер */
+
+.conteiner{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+/* BTN */
+
+.btn{
+    background: #333333;
+}
+
+/* Интро */
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+
+    background: url('/static/img/mainpage/backGround.jpg') center no-repeat;
+    background-size: cover;
+    
+}
+
+.intro_title {
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    color: #ffffff;
+}
+
+.intro_title::after{
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #ffffff;
+
+    margin: 60px auto 60px ;
+
+}
+
+.intro_inner {
+    text-align: center;
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.intro_suptitle{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #ffffff;
+    /* font-family:  'Kaushan Script', cursive; */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* HEADER */
+
+.header {
+    padding-top: 30px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* NAV */
+
+.nav {
+    text-transform: uppercase;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.nav_link {
+    color: #ffffff;
+    text-decoration: none;
+
+    transition:  color .2s linear;
+
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px;
+/* это свойтсво *релатив делаем чтобы выравнивание
+ подчеркивания происходило относительно ссылки */
+    position: relative; 
+    
+    
+}
+
+.nav_link:hover{
+    color: #fce38a;
+}
+
+.nav_link:after{
+    content: '';
+    display: block;
+    width: 100%;
+
+    background-color: #fce38a;
+    height: 3px;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    
+
+    opacity: 0;
+
+    transition: opacity .2s linear;
+}
+
+.nav_link:hover:after {
+    opacity: 1;
+    
+}
+
+
+.nav_img{
+    width: 30px;
+    height: 30px;
+}
+
+/* BUTTOn */
+
+.btn{
+    display: inline-block;
+    vertical-align: top;
+    padding: 8px 30px;
+    border: 3px solid #ffffff;
+
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: backgroun .1s linear, color .1s linear;
+}
+
+.btn:hover{
+    background-color: #ffffff;
+    color: #333333;
+}
+
+/* SLIDER */
+
+.intro_slider{
+    position: absolute;
+   bottom: 0;
+   left: 0;
+   z-index: 1;
+   width: 100%;
+}
+
+.slider_inner{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.slider_item{
+    width: 24%;
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 20px 0;
+
+    border-top: 3px solid #ffffff;
+
+    opacity: .7;
+
+    position: relative;
+}
+
+.slider_num{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.slider_item.active{
+    opacity: 1;
+}
+
+.slider_item.active::before{
+    content: '';
+    display: block;
+    width: 70px;
+    height: 3px;
+
+    position: absolute;
+    top: -3px;
+    left: 0;
+    z-index: 1;
+    background-color: #f38181;
+}
+
+
+
+/* SECTION */
+
+.section{
+    padding: 80px 0px;
+}
+
+.section_header{
+    
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.section_suptitle{
+    font-size: 24px;
+    color: #ffffff;
+    /* font-family: 'Kaushan Script', cursive; */
+}
+
+.section_title{
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.section_title:after{
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #ffffff;
+
+    margin: 30px auto 30px;
+}
+
+.section_text{
+    font-size: 15px;
+    color: #999;
+}
+
+
+.section--devices{
+    /*background: url(./img/ipad/bg_devises.jpg) center no-repeat;*/
+    background-size: cover;
+    padding-bottom: 0;
+    margin-bottom: 30px;
+}
+
+.section_card{
+    background: url('/static/img/mainpage/backGround.jpg') ;
+}
+
+
+/* ABOUT */
+
+.about{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+
+.about_item{
+    width: 380px;
+    background-color: #000000;
+
+    position: relative;
+
+    margin-right: 50px;
+    border-radius: 5%;
+
+}
+
+
+.about_item:hover .about_text{
+    opacity: 1;
+}
+
+.about_item:hover .about_img img{
+    opacity: .3;
+}
+
+.about_img{
+    background: linear-gradient(to bottom, #424242, #7f4f41);
+
+    transition: transform .1s linear;
+    border-radius: 5%;
+
+
+}
+
+.img_card{
+    border-radius: 5%;
+    width: 300px;
+    height: 400px;
+}
+
+.about_img img{
+    transition: opacity .1s linear;
+    display: block;
+}
+
+.about_item:hover .about_img{
+    transform: translate3d(-10px, -10px, 0);
+}
+
+.about_text{
+    width: 100%;
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 2;
+    transform: translate3d(0,-50%,0);
+
+    opacity: 0;
+    transition: opacity .1s linear;
+}
+
+
+
+/* STATISTIC */
+
+.statistics{
+    background-color: #ffffff;
+}
+
+.stat{
+    display: flex;
+
+}
+
+.stat_item{
+    flex: 1 1 0;
+    padding: 70px 25px;
+
+    border-left: 2px solid #363a39 ;
+    text-align: center;
+    color: #1f1d1d;
+    
+}
+
+.stat_item:last-child{
+    border-right: 2px solid #3b403f ;
+}
+
+.stat_count{
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat_text{
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+
+/* Servises */
+
+.servises{
+    display: flex;
+}
+
+.servises_item{
+    flex: 1 1 0;
+
+    padding-left: 80px;
+
+    position: relative;
+    padding-right: 20px;
+}
+
+
+.servises_icon{
+    position: absolute;
+    top: 0;
+    left: 30px;
+    z-index: 1;
+}
+
+.servises_title{
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #333333;
+}
+
+.servises_text{
+    font-size: 15px;
+    color: #333333;
+}
+
+/* DEVISES */
+
+.devices{
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.devices_item{
+    display: block;
+}
+
+.devices_item--iphone{
+    position: absolute;
+    bottom: -80px;
+    right: 0;
+    z-index: 1;
+}
+
+/* WEDO */
+
+.wedo{
+    display: flex;
+}
+
+.wedo_item{
+    width: 50%;
+}
+
+
+/* Accordeon */
+
+.accordion_item{
+    margin-bottom: 10px;
+    border: 1px solid #fce38a;
+}
+
+.accordion_item.active .accordion_content {
+    display: block;
+
+}
+
+.accordion_item.active .accordion_header{
+    border-bottom: 1px solid #fce38a;
+
+}
+
+.accordion_item.active .accordion_header::after{
+    transform:  translateY(-50%) rotate(-45deg);
+
+}
+
+
+.accordion_header{
+    padding: 15px 20px 15px 65px;
+    border-bottom: 1px solid #fce38a transparent;
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+.accordion_header::after{
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    
+
+    border-top: 2px solid #999;
+    border-right: 2px solid #999;
+
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    z-index: 1;
+
+    transform:  translateY(-50%) rotate(135deg);
+}
+
+.accordion_content{
+    display: none;
+
+    padding: 15px 20px;
+
+    font-size: 15px;
+    color: #999;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.accordion_title{
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #333333;
+}
+
+.accordion_icon{
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    z-index: 1;
+
+
+    transform:  translateY(-50%);
+}

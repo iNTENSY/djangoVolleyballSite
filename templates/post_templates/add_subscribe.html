@@ -1,0 +1,7 @@
+<form action="{% url 'main:subscribe' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="post_pk" value="{{ post.pk }}">
+    <input type="hidden" name="user_id" value="{% if request.user.is_authenticated %}{{ request.user.id }}{% else %}None{% endif %}">
+
+    <button type="submit">Записаться</button>
+</form>

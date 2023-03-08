@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% for post in posts %}
+        <h1>{{ post.date_time_start|date:'l' }} ({{ post.date_time_start|date:'d.m.y' }})</h1>
+        <h4>{{ post.date_time_start|date:'H:i' }} - {{ post.date_time_end|date:'H:i' }}</h4>
+        <h4>Категория: <u>{{ post.category__rank }}</u></h4>
+        <h6>{{ post.description|safe }}</h6>
+        <h5>На игру доступно: <b>{{ post.reservation }} мест/а</b></h5>
+        {% if request.user.is_authenticated %}
+            {% include 'post_templates/add_subscribe.html' %}
+            <a href="{% url 'main:post-detail' post.pk %}"><button type="button">Детали</button></a>
+        {% else %}
+            <a href="{% url 'users:login' %}"><button>Авторизоваться</button></a><
+        {% endif %}
+        <hr>
+    {% endfor %}
+{% endblock %}

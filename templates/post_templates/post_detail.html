@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% block content %}
+        <h1>{{ post.date_time_start|date:'l' }} ({{ post.date_time_start|date:'d.m.y' }})</h1>
+        <h3>{{ post.date_time_start|date:'H:i' }} - {{ post.date_time_end|date:'H:i' }}</h3>
+        <h3>Категория: <u>{{ post.category__rank }}</u></h3>
+        <h3>{{ post.description|safe }}</h3>
+        <h5>На игру доступно: <b>{{ post.reservation }} мест/а</b></h5>
+        <p>На игру записались: {{ players_today }}
+        </p>
+    {% endblock %}
+</body>
+</html>

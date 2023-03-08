@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ request.user.username }}</title>
+</head>
+<body>
+    <img src="
+        {% if player.image %}
+            {{ player.image.url }}
+        {% else %}
+            {% static 'img/default_static/user_avatar.png' %}
+        {% endif %}"
+         width="100" height="100" alt="#">
+
+    <p>Имя пользователя: {{ player.username }}<br>
+    Команда: {% if player.team__name %}{{ player.team__name }} | Рейтинг команды: {{ player.team__rating }}
+    {% else %}Отсутствует {% endif %}<br>
+    Позиция: {{ player.get_position_display }}
+    {% if player.is_verified == False and player.email != '' %}
+        <a href="{% url 'users:send-email' player.email %}">Подтвердить почту!</a>
+    {% endif %}</p>
+    <p><a href="{% url 'main:page' %}"><-- На главную</a></p>
+</body>
+</html>

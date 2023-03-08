@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:ital,wght@1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+
+        <div class="conteiner">
+            <div class="header_inner">
+                <div class="logo">
+                    <a class="nav_link" href="{% url 'main:page' %}">
+                        <img class="nav_img" src="{% static 'img/mainpage/logo.png' %}" alt="">
+                    </a>
+                </div>
+
+                <nav class="nav">
+                    <a class="nav_link" href="{% url 'rating:teamlist' %}">
+                        <img class="nav_img" src="{% static 'img/mainpage/teams.png' %}" alt="">
+                    </a>
+                    <a class="nav_link" href="#">
+                        <img class="nav_img" src="{% static 'img/mainpage/uvedomlenia.png' %}" alt="">
+                    </a>
+                    {% if request.user.is_authenticated %}
+                        <a class="nav_link" href="{% url 'users:profile' request.user.id %}">{{ request.user.username }}</a>
+                        <a class="nav_link" href="{% url 'users:logout' %}">Выйти</a>
+                    {% else %}
+                        <a class="nav_link" href="{% url 'users:login' %}">Вход</a>
+                        <a class="nav_link" href="{% url 'users:registration' %}">Регистрация</a>
+                    {% endif %}
+
+                </nav>
+            </div>
+        </div>
+
+    </header>
+{% block content %}
+    <div class="intro">
+        <div class="conteiner">
+            <div class="intro_inner">
+                <h2 class="intro_suptitle">Добро пожаловать</h2>
+                <h1 class="intro_title">Чтобы записаться, требуется авторизоваться</h1>
+                <a href="{% url 'main:all-post' %}"><button type="button" class="btn">Записаться</button></a>
+           </div>
+            <div class="intro_slider">
+                <div class="conteiner">
+                    <div class="slider_inner">
+                        <div class="slider_item active"><b class="slider_num">01</b> Главная</div>
+                        <div class="slider_item"><b class="slider_num" >02</b> Записаться</div>
+                        <div class="slider_item"><b class="slider_num" >03</b> О нас</div>
+                        <div class="slider_item"><b class="slider_num" >04</b> Телеграм бот</div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="statistics">
+        <div class="conteiner">
+            <div class="stat">
+                <div class="stat_item">
+                    <div class="stat_count">>50</div>
+                    <div class="stat_text">Игроков, которые готовы поиграть</div>
+                </div>
+                <div class="stat_item">
+                    <div class="stat_count">~4</div>
+                    <div class="stat_text">Проведенных турниров между командами</div>
+                </div>
+    {#            <div class="stat_item">#}
+    {#                <div class="stat_count">99</div>#}
+    {#                <div class="stat_text">Cup of tea</div>#}
+    {#            </div>#}
+            </div>
+        </div>
+    </div>
+
+
+<section class="section section_card">
+
+    <div class="conteiner">
+        <div class="section_header">
+            <h3 class="section_suptitle">Ближайшие игры</h3>
+            <h2 class="section_title">Если записался, то не забудь придти</h2>
+
+        <div class="about" id="about">
+
+        {% for post in posts %}
+            <div class="about_item">
+                <div class="about_img">
+                    <img class="img_card" src="{% static 'img/mainpage/card.png' %}" alt="#">
+                </div>
+                <div class="about_text">
+
+                    <h1>{{ post.date_time_start|date:'l' }} ({{ post.date_time_start|date:'d.m.y' }})</h1>
+                    <h4>{{ post.date_time_start|date:'H:i' }} - {{ post.date_time_end|date:'H:i' }}</h4>
+                    <h4>Категория: <u>{{ post.category__rank }}</u></h4>
+                    <h6>{{ post.description|safe }}</h6>
+                    <h5>На игру доступно: <b>{{ post.reservation }} мест/а</b></h5>
+                    {% if request.user.is_authenticated %}
+                        {% include 'post_templates/add_subscribe.html' %}
+                    {% else %}
+                        <a href="{% url 'users:login' %}"><button>Авторизоваться</button></a><
+                    {% endif %}
+
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        </div>
+    </div>
+</section>
+
+
+    <section class="section">
+        <div class="conteiner">
+
+            <div class="section_header">
+                <h3 class="section_suptitle">We work with</h3>
+                <h2 class="section_title">Здесь бдует футер, мне просто лень</h2>
+            </div>
+
+            <div class="servises">
+                <div class="servises_item">
+                    <img class='servises_icon' src="#" alt="#">
+
+                    <div class="servises_title">photography</div>
+                    <div class="servises_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</div>
+                </div>
+
+                <div class="servises_item">
+                    <img class='servises_icon' src="#" alt="#">
+
+                    <div class="servises_title">Web Design</div>
+                    <div class="servises_text">Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm</div>
+                </div>
+
+                <div class="servises_item">
+                    <img class='servises_icon' src="#" alt="#">
+
+                    <div class="servises_title">Creativity</div>
+                    <div class="servises_text">Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tem</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <p>
+
+    {% endblock %}
+</body>
+</html>

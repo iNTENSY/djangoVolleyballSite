@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <p>Волейбол. Севастопольский рейтинг на {% now 'F d, Y' %} </p>
+    <ol>
+    {% for team in rating_list %}
+        <li><img src="
+            {% if team.image %}
+                {% get_media_prefix %}{{ team.image }}
+            {% else %}
+                {% static 'img/default_static/placeholder.svg' %}
+            {% endif %}"
+                 width="25" height="25" alt="#"> {{ team.name }}</li>
+    {% endfor %}
+    </ol>
+{% endblock %}
